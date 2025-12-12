@@ -1,0 +1,99 @@
+# ==================================
+# Git and Version Control
+# ==================================
+.git
+.github
+.gitignore
+.gitattributes
+
+# ==================================
+# Python
+# ==================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+
+# ==================================
+# Testing and Coverage
+# ==================================
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+tests/
+pytest.ini
+
+# ==================================
+# Environment Files
+# ==================================
+.env
+.env.*
+!.env.example
+
+# ==================================
+# IDEs and Editors
+# ==================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+Thumbs.db
+
+# ==================================
+# Documentation
+# ==================================
+*.md
+!README.md
+LICENSE
+docs/
+
+# ==================================
+# Docker
+# ==================================
+Dockerfile
+.dockerignore
+docker-compose.yml
+docker-compose.*.yml
+
+# ==================================
+# Uploads (local development)
+# ==================================
+uploads/*
+!uploads/.gitkeep
+
+# ==================================
+# Logs
+# ==================================
+*.log
+logs/
+
+# ==================================
+# Build artifacts
+# ==================================
+build/
+dist/
+*.egg-info/

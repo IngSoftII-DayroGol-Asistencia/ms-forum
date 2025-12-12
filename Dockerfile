@@ -37,12 +37,14 @@ RUN useradd -m -u 1000 appuser && \
 # Cambiar al usuario no-root
 USER appuser
 
-# Exponer el puerto
-EXPOSE 8000
+# Exponer el puerto (Cloud Run usa PORT env variable, default 8000 para desarrollo local)
+ENV PORT=8000
+EXPOSE $PORT
 
 # Healthcheck para verificar que el servicio está funcionando
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-    CMD curl -f http://localhost:8000/health || exit 1
+    CMD curl -f http://localhost:${PORT}/health || exit 1
 
 # Comando para ejecutar la aplicación
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Usa la variable de entorno PORT si está definida, sino usa 8000
+CMD uvicorn app.main:app --host 0.0.0.0 --port ${PORT}
