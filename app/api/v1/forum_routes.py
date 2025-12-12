@@ -20,6 +20,7 @@ def create_post(
     org_id: str,
     title: str = Form(...),
     content: str = Form(...),
+    user_id: str = Form(...),
     files: Optional[List[UploadFile]] = File(None),
 ):
     """
@@ -29,11 +30,12 @@ def create_post(
     Espera un multipart/form-data con:
       - title: texto
       - content: texto
+      - user_id: texto
       - files: lista de archivos (opcional)
     """
     try:
         # 1) Construimos el DTO de creación con los datos del formulario
-        post_data = PostCreate(title=title, content=content)
+        post_data = PostCreate(title=title, content=content, user_id=user_id)
 
         # 2) Creamos el post asociado a la organización
         new_post = service.create_post(org_id, post_data)

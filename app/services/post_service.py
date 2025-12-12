@@ -9,6 +9,7 @@ class PostService:
     def create_post(self, org_id: str, post_data: PostCreate, files: Optional[List[UploadFile]] = None) -> Post:
         post = Post(
             organization_id=org_id,
+            user_id=post_data.user_id,
             title=post_data.title,
             content=post_data.content
         )

@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: ms-forum-mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: ms_forum  # Base de datos inicial
+    volumes:
+      - mongo_data:/data/db  # Persistencia de datos
+
+  app:
+    build: .
+    container_name: ms-forum-app
+    restart: unless-stopped
+    ports:
+      - "8001:8000"  # Cambiado a 8001 externamente, manteniendo 8000 internamente
+    environment:
+      MONGO_URI: mongodb://mongodb:27017/ms_forum  # Conexión a MongoDB en el contenedor
+      JWT_SECRET_KEY: your_secret_key_here  # Reemplaza con una clave secreta segura para JWT
+    depends_on:
+      - mongodb
+    volumes:
+      - ./uploads:/app/uploads  # Montar carpeta de uploads si es necesario
+
+volumes:
+  mongo_data:

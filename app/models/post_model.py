@@ -3,6 +3,7 @@ from datetime import datetime
 
 class Post(Document):
     organization_id = StringField(required=True, max_length=100)
+    user_id = StringField(required=True, max_length=100)
     title = StringField(required=True, max_length=200)
     content = StringField(required=True, max_length=5000)
     created_at = DateTimeField(default=datetime.utcnow)
@@ -30,6 +31,7 @@ class Post(Document):
         return {
             "id": str(self.id),
             "organization_id": self.organization_id,
+            "user_id": self.user_id,
             "title": self.title,
             "content": self.content,
             "created_at": self.created_at.isoformat(),

@@ -5,6 +5,7 @@ from datetime import datetime
 class PostCreate(BaseModel):
     title: str
     content: str
+    user_id: str
 
 class AttachmentOut(BaseModel):
     id: str
@@ -44,6 +45,7 @@ class PostOut(PostCreate):
             id=post_dict['id'],
             title=post.title,
             content=post.content,
+            user_id=post.user_id,
             created_at=post.created_at,
             organization_id=post.organization_id,   
             attachments=attachments,

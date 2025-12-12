@@ -44,6 +44,7 @@ def mock_post():
     post = Mock()
     post.id = ObjectId()
     post.organization_id = "org_123"
+    post.user_id = "user_123"
     post.title = "Test Post"
     post.content = "Test content"
     post.created_at = datetime.utcnow()
@@ -61,6 +62,7 @@ def mock_post():
     post.to_mongo = Mock(return_value={
         '_id': post.id,
         'organization_id': post.organization_id,
+        'user_id': post.user_id,
         'title': post.title,
         'content': post.content,
         'created_at': post.created_at,
@@ -134,7 +136,8 @@ def sample_post_data():
     """Datos de ejemplo para crear un post"""
     return {
         "title": "Test Post Title",
-        "content": "This is test content for the post"
+        "content": "This is test content for the post",
+        "user_id": "user_123"
     }
 
 @pytest.fixture
