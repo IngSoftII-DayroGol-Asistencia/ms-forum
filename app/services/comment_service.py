@@ -20,7 +20,7 @@ class CommentService:
 
             # Crear el comentario con la REFERENCIA al post
             comment = Comment(
-                post=post,  # ✅ Pasamos el objeto Post completo
+                post=post,  
                 user_name=user_name,
                 content=content
             )
