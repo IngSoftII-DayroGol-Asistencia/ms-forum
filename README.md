@@ -1,4 +1,61 @@
 # 🗣️ Forum Microservice
+```
+ms-forum
+├─ app
+│  ├─ api
+│  │  └─ v1
+│  │     ├─ comment_routes.py
+│  │     ├─ forum_routes.py
+│  │     ├─ reaction_routes.py
+│  │     ├─ __init__.py
+│  │     └─ __pycache__
+│  ├─ core
+│  │  ├─ config.py
+│  │  ├─ security.py
+│  │  └─ __pycache__
+│  ├─ db
+│  │  ├─ mongodb.py
+│  │  └─ __pycache__
+│  ├─ main.py
+│  ├─ models
+│  │  ├─ attachment_model.py
+│  │  ├─ comment__model.py
+│  │  ├─ post_model.py
+│  │  ├─ reaction_model.py
+│  │  ├─ __init__.py
+│  │  └─ __pycache__
+│  ├─ schemas
+│  │  ├─ comment_schema.py
+│  │  ├─ post_schema.py
+│  │  ├─ reaction_schema.py
+│  │  ├─ __init__.py
+│  │  └─ __pycache__
+│  ├─ services
+│  │  ├─ attachment_service.py
+│  │  ├─ comment_service.py
+│  │  ├─ post_service.py
+│  │  ├─ reaction_service.py
+│  │  ├─ __init__.py
+│  │  └─ __pycache__
+│  ├─ __init__.py
+│  └─ __pycache__
+├─ Dockerfile
+├─ LICENSE
+├─ pytest.ini
+├─ README.md
+├─ requirements.txt
+└─ tests
+   ├─ conftest.py
+   ├─ test_comment_routes.py
+   ├─ test_connection.py
+   ├─ test_forum_routes.py
+   ├─ test_post_model.py
+   ├─ test_post_service.py
+   ├─ test_reaction_routes.py
+   ├─ __init__.py
+   └─ __pycache__
+
+```
 
 Microservicio de foro para gestionar posts, comentarios y reacciones, construido con FastAPI y MongoDB.
 
@@ -119,60 +176,3 @@ docker run -p 8000:8000 --env-file .env ms-forum
 - **Pydantic** - Validación de datos
 - **PyJWT** - Manejo de tokens JWT
 
-```
-ms-forum
-├─ app
-│  ├─ api
-│  │  └─ v1
-│  │     ├─ comment_routes.py
-│  │     ├─ forum_routes.py
-│  │     ├─ reaction_routes.py
-│  │     ├─ __init__.py
-│  │     └─ __pycache__
-│  ├─ core
-│  │  ├─ config.py
-│  │  ├─ security.py
-│  │  └─ __pycache__
-│  ├─ db
-│  │  ├─ mongodb.py
-│  │  └─ __pycache__
-│  ├─ main.py
-│  ├─ models
-│  │  ├─ attachment_model.py
-│  │  ├─ comment__model.py
-│  │  ├─ post_model.py
-│  │  ├─ reaction_model.py
-│  │  ├─ __init__.py
-│  │  └─ __pycache__
-│  ├─ schemas
-│  │  ├─ comment_schema.py
-│  │  ├─ post_schema.py
-│  │  ├─ reaction_schema.py
-│  │  ├─ __init__.py
-│  │  └─ __pycache__
-│  ├─ services
-│  │  ├─ attachment_service.py
-│  │  ├─ comment_service.py
-│  │  ├─ post_service.py
-│  │  ├─ reaction_service.py
-│  │  ├─ __init__.py
-│  │  └─ __pycache__
-│  ├─ __init__.py
-│  └─ __pycache__
-├─ Dockerfile
-├─ LICENSE
-├─ pytest.ini
-├─ README.md
-├─ requirements.txt
-└─ tests
-   ├─ conftest.py
-   ├─ test_comment_routes.py
-   ├─ test_connection.py
-   ├─ test_forum_routes.py
-   ├─ test_post_model.py
-   ├─ test_post_service.py
-   ├─ test_reaction_routes.py
-   ├─ __init__.py
-   └─ __pycache__
-
-```
