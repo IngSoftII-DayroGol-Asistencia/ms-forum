@@ -37,8 +37,8 @@ RUN useradd -m -u 1000 appuser && \
 # Cambiar al usuario no-root
 USER appuser
 
-# Exponer el puerto (Cloud Run usa PORT env variable, default 8000 para desarrollo local)
-ENV PORT=8000
+# Exponer el puerto (Cloud Run usa PORT env variable, default 8080 para Cloud Run)
+ENV PORT=8080
 EXPOSE $PORT
 
 # Healthcheck para verificar que el servicio está funcionando
