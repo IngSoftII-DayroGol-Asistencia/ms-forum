@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from fastapi.staticfiles import StaticFiles
+
 from fastapi.middleware.cors import CORSMiddleware
 from app.db.mongodb import init_db
 from app.api.v1 import forum_routes
@@ -33,8 +33,7 @@ app.include_router(comment_routes.router)
 # Rutas de reacciones (likes/dislikes)
 app.include_router(reaction_routes.router)
 
-# Montar carpeta de archivos estáticos
-app.mount("/files", StaticFiles(directory="uploads"), name="files")
+
 
 @app.get("/")
 def root():

@@ -19,7 +19,8 @@ class Reaction(Document):
             'user_id',
             ('post', 'user_id'),  # Índice compuesto para búsquedas rápidas
             'reaction_type'
-        ]
+        ],
+        'auto_create_index': False
     }
     
     def to_dict(self):

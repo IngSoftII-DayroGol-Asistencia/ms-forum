@@ -13,7 +13,8 @@ class Comment(Document):
         'indexes': [
             'post',  # Índice para buscar comentarios por post rápidamente
             '-created_at'  # Índice para ordenar por fecha
-        ]
+        ],
+        'auto_create_index': False
     }
     
     def to_dict(self):

@@ -32,7 +32,7 @@ def init_db():
             connectTimeoutMS=10000,          
             socketTimeoutMS=10000,           
             maxPoolSize=10,                  
-            retryWrites=True
+            retryWrites=False
         )
         print("✅ Successfully connected to MongoDB Atlas with MongoEngine!")
         return True

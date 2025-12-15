@@ -9,8 +9,6 @@ class Post(Document):
     created_at = DateTimeField(default=datetime.utcnow)
     updated_at = DateTimeField(default=datetime.utcnow)
     
-    # Referencias a attachments
-    attachments = ListField(ReferenceField('Attachment'))
     
     # Contadores para optimizar queries
     likes_count = IntField(default=0)
@@ -23,7 +21,8 @@ class Post(Document):
             'organization_id',
             '-created_at',  # Para ordenar posts por fecha descendente
             ('organization_id', '-created_at')  # Índice compuesto
-        ]
+        ],
+        'auto_create_index': False
     }
     
     def to_dict(self):
@@ -38,6 +37,6 @@ class Post(Document):
             "updated_at": self.updated_at.isoformat(),
             "likes_count": self.likes_count,
             "dislikes_count": self.dislikes_count,
-            "comments_count": self.comments_count,
-            "attachments": [str(att.id) for att in self.attachments] if self.attachments else []
+            "dislikes_count": self.dislikes_count,
+            "comments_count": self.comments_count
         }

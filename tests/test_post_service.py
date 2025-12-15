@@ -77,6 +77,17 @@ class TestPostService:
         # Act & Assert
         with pytest.raises(Exception, match="Post not found"):
             service.get_post_by_id("org_123", str(post_id))
+
+    def test_get_post_by_id_invalid_format(self):
+        """Test: ID con formato inválido lanza excepción"""
+        # Arrange
+        from app.services.post_service import PostService
+        service = PostService()
+        
+        # Act & Assert
+        with pytest.raises(Exception, match="Invalid post ID format"):
+            service.get_post_by_id("org_123", "invalid-id-format")
+
     
     @patch('app.services.post_service.Post')
     @patch('app.services.post_service.ObjectId')
@@ -139,22 +150,3 @@ class TestPostService:
         mock_post.delete.assert_called_once()
         assert result == {"message": "Post deleted successfully"}
     
-    @patch('app.services.post_service.AttachmentService')
-    @patch('app.services.post_service.Post')
-    def test_create_post_with_files(self, mock_post_class, mock_attachment_service, 
-                                     sample_post_data, mock_post, mock_upload_file):
-        """Test: Crear post con archivos adjuntos"""
-        # Arrange
-        from app.services.post_service import PostService
-        from app.schemas.post_schema import PostCreate
-        
-        mock_post_class.return_value = mock_post
-        service = PostService()
-        post_data = PostCreate(**sample_post_data)
-        
-        # Act
-        result = service.create_post("org_123", post_data, files=[mock_upload_file])
-        
-        # Assert
-        mock_post.save.assert_called_once()
-        assert result == mock_post

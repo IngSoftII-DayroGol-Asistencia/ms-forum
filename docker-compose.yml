@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   mongodb:
@@ -8,23 +8,23 @@ services:
     ports:
       - "27017:27017"
     environment:
-      MONGO_INITDB_DATABASE: ms_forum  # Base de datos inicial
+      MONGO_INITDB_DATABASE: ms_forum # Base de datos inicial
     volumes:
-      - mongo_data:/data/db  # Persistencia de datos
+      - mongo_data:/data/db # Persistencia de datos
 
   app:
     build: .
     container_name: ms-forum-app
     restart: unless-stopped
     ports:
-      - "8001:8080"  # Cambiado a 8001 externamente, manteniendo 8000 internamente
+      - "8001:8080" # Cambiado a 8001 externamente, manteniendo 8000 internamente
     environment:
-      MONGO_URI: mongodb://mongodb:27017/ms_forum  # Conexión a MongoDB en el contenedor
-      JWT_SECRET_KEY: your_secret_key_here  # Reemplaza con una clave secreta segura para JWT
+      MONGO_URI: "mongodb://heric-perdio-con-german:cIMCkkJ0ZRjwg28fGmRAZF30qrXyhtR8BaALufTRXIxq82JR@1c8de3d7-36ad-459b-8283-fcbb2c1093b1.southamerica-west1.firestore.goog:443/ms-forum?loadBalanced=true&tls=true&authMechanism=SCRAM-SHA-256&retryWrites=false" #Conexión a MongoDB en el contenedor
+      JWT_SECRET_KEY: your_secret_key_here # Reemplaza con una clave secreta segura para JWT
     depends_on:
       - mongodb
     volumes:
-      - ./uploads:/app/uploads  # Montar carpeta de uploads si es necesario
+      - ./uploads:/app/uploads # Montar carpeta de uploads si es necesario
 
 volumes:
   mongo_data:

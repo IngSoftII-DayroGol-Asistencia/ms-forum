@@ -4,7 +4,7 @@ Verifican los endpoints de la API para posts
 """
 import pytest
 from unittest.mock import Mock, patch
-from io import BytesIO
+
 
 class TestForumRoutes:
     """Tests para las rutas del foro"""
@@ -18,7 +18,7 @@ class TestForumRoutes:
         # Act
         response = client.post(
             "/orgs/org_123/forum/",
-            data=sample_post_data
+            json=sample_post_data
         )
         
         # Assert
@@ -121,30 +121,7 @@ class TestForumRoutes:
         assert response.status_code == 200
         assert response.json()["message"] == "Post deleted successfully"
     
-    @patch('app.api.v1.forum_routes.attachment_service.attach_file_to_post')
-    @patch('app.api.v1.forum_routes.service.get_post_by_id')
-    def test_upload_attachment(self, mock_get_post, mock_attach, client, mock_post, mock_attachment):
-        """Test: POST /orgs/{org_id}/forum/{post_id}/upload - Subir archivo"""
-        # Arrange
-        post_id = str(mock_post.id)
-        mock_get_post.return_value = mock_post
-        mock_attach.return_value = mock_attachment
-        
-        # Crear archivo de prueba
-        file_content = b"fake file content"
-        files = {"file": ("test.pdf", BytesIO(file_content), "application/pdf")}
-        
-        # Act
-        response = client.post(
-            f"/orgs/org_123/forum/{post_id}/upload",
-            files=files
-        )
-        
-        # Assert
-        assert response.status_code == 200
-        data = response.json()
-        assert "file_name" in data
-        assert data["file_name"] == "test_file.pdf"
+
     
     @patch('app.api.v1.forum_routes.service.create_post')
     def test_create_post_validation_error(self, mock_create, client):
@@ -155,7 +132,7 @@ class TestForumRoutes:
         # Act
         response = client.post(
             "/orgs/org_123/forum/",
-            data=invalid_data
+            json=invalid_data
         )
         
         # Assert

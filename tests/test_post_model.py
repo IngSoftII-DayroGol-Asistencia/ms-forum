@@ -32,7 +32,8 @@ class TestPostModel:
             "likes_count": mock_post.likes_count,
             "dislikes_count": mock_post.dislikes_count,
             "comments_count": mock_post.comments_count,
-            "attachments": []
+            "dislikes_count": mock_post.dislikes_count,
+            "comments_count": mock_post.comments_count
         })
         
         # Act
@@ -68,14 +69,7 @@ class TestPostModel:
         # Assert
         mock_post.delete.assert_called_once()
     
-    def test_post_with_attachments(self, mock_post, mock_attachment):
-        """Test: Post con attachments"""
-        # Arrange
-        mock_post.attachments = [mock_attachment]
-        
-        # Assert
-        assert len(mock_post.attachments) == 1
-        assert mock_post.attachments[0].file_name == "test_file.pdf"
+
     
     def test_post_increment_likes(self, mock_post):
         """Test: Incrementar contador de likes"""
