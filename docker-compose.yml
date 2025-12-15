@@ -19,7 +19,7 @@ services:
     ports:
       - "8001:8080" # Cambiado a 8001 externamente, manteniendo 8000 internamente
     environment:
-      MONGO_URI: "mongodb://heric-perdio-con-german:cIMCkkJ0ZRjwg28fGmRAZF30qrXyhtR8BaALufTRXIxq82JR@1c8de3d7-36ad-459b-8283-fcbb2c1093b1.southamerica-west1.firestore.goog:443/ms-forum?loadBalanced=true&tls=true&authMechanism=SCRAM-SHA-256&retryWrites=false" #Conexión a MongoDB en el contenedor
+      MONGO_URI: "aaaaaa" #Conexión a MongoDB en el contenedor
       JWT_SECRET_KEY: your_secret_key_here # Reemplaza con una clave secreta segura para JWT
     depends_on:
       - mongodb
